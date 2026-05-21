@@ -1084,12 +1084,12 @@ const JEOPARDY = {
 
 // Q&A CARDS
 const QA_CARDS = [
-  {q:"What is your name?",img:"images/Phase4_QA/q4_01_name_tag.jpg",a:"My name is Claire.",bg:"#bbdefb",imgPos:"top center"},
+  {q:"What is your name?",img:"images/Phase4_QA/q4_01_name_tag.jpg",a:"My name is Claire.",bg:"#bbdefb",imgPos:"center 25%"},
   {q:"What is your last name?",img:"images/Phase4_QA/q4_02_last_name_document.jpg",a:"My last name is Dupont.",bg:"#c8e6c9"},
   {q:"What is your nationality?",img:"images/Phase4_QA/q4_03_french_flag.jpg",a:"I am French.",bg:"#ffcdd2"},
   {q:"How old are you?",img:"images/Phase4_QA/q4_04_birthday_cake.jpg",a:"I am 32 years old.",bg:"#fff9c4"},
   {q:"What's your phone number?",img:"images/Phase4_QA/q4_05_phone_number.jpg",a:"My number is 01-23-45-67-89.",bg:"#e1bee7"},
-  {q:"What do you do?",img:"images/Phase4_QA/q4_06_truck_driver.jpg",a:"I am a truck driver.",bg:"#ffe0b2"},
+  {q:"What do you do?",img:"images/Phase4_QA/q4_06_truck_driver.jpg",a:"I am a truck driver.",bg:"#ffe0b2",imgPos:"center 20%"},
   {q:"What is your zip code?",img:"images/Phase4_QA/q4_zipcode_france.jpg",a:"My zip code is 75008.",bg:"#dcedc8"},
   {q:"What is your address?",img:"images/Phase4_QA/q4_street_france.jpg",a:"My address is 14 Rue de Rivoli, Paris.",bg:"#fce4ec"},
   {q:"What is your email address?",img:"images/Phase4_QA/q4_email_claire.jpg",a:"My email is claire.dupont@mail.fr.",bg:"#f3e5f5",note:true}
@@ -1334,8 +1334,10 @@ function renderQA(){
       <div class="qa-answer-row">
         <div class="qa-answer">"${c.a}"</div>
         <div class="qa-note-side">
-          <div class="qa-note-tag">@ = "at"</div>
-          <div class="qa-note-tag">. = "dot"</div>
+          <div style="display:flex;gap:4px;">
+            <div class="qa-note-tag">@ = "at"</div>
+            <div class="qa-note-tag">. = "dot"</div>
+          </div>
           <div class="qa-note-tag">_ = "underscore"</div>
         </div>
       </div>` : `<div class="qa-answer">"${c.a}"</div>`}
