@@ -383,8 +383,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#05046A;font-family:
 .qa-img img{width:100%;height:100%;object-fit:cover;border-radius:6px;}
 .qa-answer{font-size:13px;font-style:italic;color:#2d2d4e;font-weight:500;line-height:1.3;}
 .qa-answer-row{display:flex;align-items:flex-start;gap:6px;}
-.qa-note-side{display:flex;flex-direction:row;gap:4px;flex-shrink:0;align-items:center;}
-.qa-note-tag{font-size:13px;font-weight:700;color:#1a1a2e;background:rgba(0,0,0,0.12);border-radius:5px;padding:3px 7px;line-height:1.3;text-align:center;white-space:nowrap;}
+.qa-note-side{display:flex;flex-direction:column;gap:3px;flex-shrink:0;align-items:flex-start;}
+.qa-note-tag{font-size:11px;font-weight:700;color:#1a1a2e;background:rgba(0,0,0,0.12);border-radius:5px;padding:2px 6px;line-height:1.3;text-align:center;white-space:nowrap;}
 .qa-note{font-size:10px;color:#555;margin-top:2px;line-height:1.3;background:rgba(0,0,0,0.06);border-radius:4px;padding:3px 5px;}
 
 /* ── PHASE 4b: NATIONALITIES GRID ─────────────────────────────────── */
@@ -968,6 +968,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#05046A;font-family:
   </div><!-- /slide-area -->
 </div><!-- /slides-wrapper -->
 
+</div><!-- /app -->
+
 <!-- ══ LESSON PLAN MODAL ══════════════════════════════════════════════ -->
 <div id="lp-overlay" onclick="if(event.target===this)closeLPModal()">
   <div id="lp-modal">
@@ -1082,7 +1084,7 @@ const JEOPARDY = {
 
 // Q&A CARDS
 const QA_CARDS = [
-  {q:"What is your name?",img:"images/Phase4_QA/q4_01_name_tag.jpg",a:"My name is Claire.",bg:"#bbdefb"},
+  {q:"What is your name?",img:"images/Phase4_QA/q4_01_name_tag.jpg",a:"My name is Claire.",bg:"#bbdefb",imgPos:"top center"},
   {q:"What is your last name?",img:"images/Phase4_QA/q4_02_last_name_document.jpg",a:"My last name is Dupont.",bg:"#c8e6c9"},
   {q:"What is your nationality?",img:"images/Phase4_QA/q4_03_french_flag.jpg",a:"I am French.",bg:"#ffcdd2"},
   {q:"How old are you?",img:"images/Phase4_QA/q4_04_birthday_cake.jpg",a:"I am 32 years old.",bg:"#fff9c4"},
@@ -1090,7 +1092,7 @@ const QA_CARDS = [
   {q:"What do you do?",img:"images/Phase4_QA/q4_06_truck_driver.jpg",a:"I am a truck driver.",bg:"#ffe0b2"},
   {q:"What is your zip code?",img:"images/Phase4_QA/q4_zipcode_france.jpg",a:"My zip code is 75008.",bg:"#dcedc8"},
   {q:"What is your address?",img:"images/Phase4_QA/q4_street_france.jpg",a:"My address is 14 Rue de Rivoli, Paris.",bg:"#fce4ec"},
-  {q:"What is your email address?",img:"images/Phase4_QA/q4_email_claire.jpg",a:"My email is claire.dupont@mail.fr.",bg:"#f3e5f5",note:"@ = \"at\" &nbsp;·&nbsp; . = \"dot\" &nbsp;·&nbsp; _ = \"underscore\""}
+  {q:"What is your email address?",img:"images/Phase4_QA/q4_email_claire.jpg",a:"My email is claire.dupont@mail.fr.",bg:"#f3e5f5",note:true}
 ];
 
 // PASSPORTS
@@ -1327,13 +1329,14 @@ function renderQA(){
   g.innerHTML = QA_CARDS.map(c=>`
     <div class="qa-card" style="background:${c.bg};">
       <div class="qa-question">${c.q}</div>
-      <div class="qa-img"><img src="${c.img}" alt="${c.q}"></div>
+      <div class="qa-img"><img src="${c.img}" alt="${c.q}" style="object-position:${c.imgPos||'center center'}"></div>
       ${c.note ? `
       <div class="qa-answer-row">
         <div class="qa-answer">"${c.a}"</div>
         <div class="qa-note-side">
           <div class="qa-note-tag">@ = "at"</div>
           <div class="qa-note-tag">. = "dot"</div>
+          <div class="qa-note-tag">_ = "underscore"</div>
         </div>
       </div>` : `<div class="qa-answer">"${c.a}"</div>`}
     </div>`).join('');
