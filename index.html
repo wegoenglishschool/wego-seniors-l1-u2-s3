@@ -1084,7 +1084,7 @@ const JEOPARDY = {
 
 // Q&A CARDS
 const QA_CARDS = [
-  {q:"What is your name?",img:"images/Phase4_QA/q4_01_name_tag.jpg",a:"My name is Claire.",bg:"#bbdefb",imgPos:"center 40%"},
+  {q:"What is your name?",img:"images/Phase4_QA/q4_01_name_tag.jpg",a:"My name is Claire.",bg:"#bbdefb",imgFit:"contain",imgPos:"center center"},
   {q:"What is your last name?",img:"images/Phase4_QA/q4_02_last_name_document.jpg",a:"My last name is Dupont.",bg:"#c8e6c9"},
   {q:"What is your nationality?",img:"images/Phase4_QA/q4_03_french_flag.jpg",a:"I am French.",bg:"#ffcdd2"},
   {q:"How old are you?",img:"images/Phase4_QA/q4_04_birthday_cake.jpg",a:"I am 32 years old.",bg:"#fff9c4"},
@@ -1329,7 +1329,7 @@ function renderQA(){
   g.innerHTML = QA_CARDS.map(c=>`
     <div class="qa-card" style="background:${c.bg};">
       <div class="qa-question">${c.q}</div>
-      <div class="qa-img"><img src="${c.img}" alt="${c.q}" style="object-position:${c.imgPos||'center center'}"></div>
+      <div class="qa-img" style="background:${c.bg};"><img src="${c.img}" alt="${c.q}" style="object-fit:${c.imgFit||'cover'};object-position:${c.imgPos||'center center'}"></div>
       ${c.note ? `
       <div class="qa-answer-row">
         <div class="qa-answer">"${c.a}"</div>
