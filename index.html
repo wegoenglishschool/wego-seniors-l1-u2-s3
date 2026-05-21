@@ -1329,7 +1329,7 @@ function renderQA(){
   g.innerHTML = QA_CARDS.map(c=>`
     <div class="qa-card" style="background:${c.bg};">
       <div class="qa-question">${c.q}</div>
-      <div class="qa-img" style="background:${c.bg};"><img src="${c.img}" alt="${c.q}" style="object-fit:${c.imgFit||'cover'};object-position:${c.imgPos||'center center'}"></div>
+      <div class="qa-img" style="background:${c.bg};display:flex;align-items:center;justify-content:center;"><img src="${c.img}" alt="${c.q}" style="${c.imgFit==='contain'?'width:auto;height:100%;max-width:100%;':'width:100%;height:100%;object-fit:cover;'}object-position:${c.imgPos||'center center'};border-radius:6px;"></div>
       ${c.note ? `
       <div class="qa-answer-row">
         <div class="qa-answer">"${c.a}"</div>
